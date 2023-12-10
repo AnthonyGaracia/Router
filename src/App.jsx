@@ -19,18 +19,36 @@ function App() {
     )
   }
 
-  const Users = () => {
+  const Users = ({users}) => {
     return(
       <div>
         <h1>Users</h1>
+        <ul>
+          {
+            users.map((user) => {
+              return(
+                <li key={user.id}>{user.name}</li>
+              )
+            })
+          }
+        </ul>
       </div>
     )
   }
   
-  const Posts = () => {
+  const Posts = ({posts}) => {
     return(
       <div>
         <h1>Posts</h1>
+        <ul>{
+          posts.map((post) => {
+            return(
+              <li key={post.id}>{post.body}</li>
+            )
+          })
+          }
+
+        </ul>
       </div>
     )
   }
@@ -63,8 +81,8 @@ function App() {
 
         <Routes>
           <Route path='/' element={<Home/>}/>
-          <Route path='/users' element={<Users/>}/>
-          <Route path='/posts' element={<Posts/>}/>
+          <Route path='/users' element={<Users users={users}/>}/>
+          <Route path='/posts' element={<Posts posts={posts}/>}/>
         </Routes>
    
       </div>
